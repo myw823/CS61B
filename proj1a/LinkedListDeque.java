@@ -3,10 +3,7 @@ public class LinkedListDeque<T> {
         private Node prev;
         private T item;
         private Node next;
-    
-        public Node(T item) {
-            this.item = item;
-        }
+
         public Node(T item, Node prev, Node next) {
             this.item = item;
             this.prev = prev;
@@ -17,9 +14,9 @@ public class LinkedListDeque<T> {
     private Node sentinel;
     private int size;
 
-    public LinkedListDeque(T sentinelItem) {
+    public LinkedListDeque() {
         size = 0;
-        sentinel = new Node(sentinelItem);
+        sentinel = new Node(null, null, null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
     }
@@ -91,7 +88,7 @@ public class LinkedListDeque<T> {
 
 
     /*public static void main(String[] args) {
-        LinkedListDeque<Integer> deque = new LinkedListDeque<>(0);
+        LinkedListDeque<Integer> deque = new LinkedListDeque<>();
         boolean emptyOrNot = deque.isEmpty();
         deque.addLast(3);
         deque.addLast(4);

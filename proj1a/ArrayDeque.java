@@ -64,7 +64,7 @@ public class ArrayDeque<T> {
         return itemsCount == 0;
     }
 
-    public int itemsCount() {
+    public int size() {
         return itemsCount;
     }
 
