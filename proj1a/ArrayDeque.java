@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class ArrayDeque<T> {
     private T[] items;
     private int itemsCount;
@@ -15,7 +14,8 @@ public class ArrayDeque<T> {
 
     private void doubleSize() {
         T[] newArr = (T[]) new Object[items.length * 2];
-        System.arraycopy(items, 0, newArr, newArr.length / 4, itemsCount);
+        System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, items.length - 1 - nextFirst);
+        System.arraycopy(items, 0, newArr, newArr.length / 4 + items.length - 1 - nextFirst, nextLast + 1);
         nextFirst = (newArr.length / 4) - 1;
         nextLast = (newArr.length / 4) + itemsCount;
         items = newArr;
@@ -23,7 +23,14 @@ public class ArrayDeque<T> {
 
     private void halveSize() {
         T[] newArr = (T[]) new Object[items.length / 2];
-        System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, itemsCount);
+        if (nextFirst > nextLast) {
+            System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, items.length - 1 - nextFirst);
+            System.arraycopy(items, 0, newArr, newArr.length / 4 + items.length - 1 - nextFirst, nextLast);
+        }
+        else if (nextFirst < nextLast) {
+            System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, itemsCount);
+        }
+        
         nextFirst = (newArr.length / 4) - 1;
         nextLast = (newArr.length / 4) + itemsCount;
         items = newArr;
@@ -62,14 +69,15 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        if(itemsCount == 0) System.out.println("No item in deque");
-        else if(nextFirst < nextLast) {
-            System.out.println(String.join(' ',Arrays.copyOfRange(items, nextFirst + 1, nextLast) ) );
+        int curr = nextFirst + 1;
+        while (curr != nextLast - 1) {
+            if(curr >= items.length) {
+                curr -= items.length;
+            }
+            System.out.print(items[curr].toString()+' ');
+            curr++;
         }
-        else if(nextFirst >= nextLast) {
-            System.out.print(String.join(' ',Arrays.copyOfRange(items, nextFirst + 1, items.length) ) );
-            System.out.println(String.join(' ',Arrays.copyOfRange(items, 0, nextLast) ) );
-        }
+        System.out.println(items[curr].toString());
     }
 
     public T removeFirst() {
@@ -101,5 +109,16 @@ public class ArrayDeque<T> {
         }
         return items[nextFirst + 1 + index];
     }
+    /*public static void main(String[] args) {
+        ArrayDeque<Character> answer = new ArrayDeque<Character>();
+        answer.addLast('a');
+        answer.addLast('b');
+        answer.addFirst('c');
+        answer.addLast('d');
+        answer.addLast('e');
+        answer.addFirst('f');
+        answer.addFirst('g');
+        answer.addLast('h');
+        answer.addFirst('i');
+    }*/
 }
-
