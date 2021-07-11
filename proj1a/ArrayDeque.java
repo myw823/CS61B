@@ -79,8 +79,11 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if(itemsCount <= items.length * 0.25) {
+        if (itemsCount <= items.length * 0.25) {
             halveSize();
+        }
+        if (itemsCount == 0) {
+            return null;
         }
         T toRemove = items[nextFirst + 1];
         items[nextFirst + 1] = null;
@@ -92,6 +95,9 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if(itemsCount <= items.length * 0.25) {
             halveSize();
+        }
+        if (itemsCount == 0) {
+            return null;
         }
         T toRemove = items[nextLast - 1];
         items[nextLast - 1] = null;
