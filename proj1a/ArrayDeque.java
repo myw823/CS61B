@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class ArrayDeque<T> {
     private T[] items;
     private int itemsCount;
@@ -14,8 +13,8 @@ public class ArrayDeque<T> {
 
     private void doubleSize() {
         T[] newArr = (T[]) new Object[items.length * 2];
-        System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, items.length - 1 - nextFirst);
-        System.arraycopy(items, 0, newArr, newArr.length / 4 + items.length - 1 - nextFirst, nextLast + 1);
+        System.arraycopy(items, nextFirst+1, newArr, newArr.length/4, items.length-1-nextFirst);
+        System.arraycopy(items, 0, newArr, newArr.length / 4 + items.length-1-nextFirst, nextLast+1);
         nextFirst = (newArr.length / 4) - 1;
         nextLast = (newArr.length / 4) + itemsCount;
         items = newArr;
@@ -26,8 +25,7 @@ public class ArrayDeque<T> {
         if (nextFirst > nextLast) {
             System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, items.length - 1 - nextFirst);
             System.arraycopy(items, 0, newArr, newArr.length / 4 + items.length - 1 - nextFirst, nextLast);
-        }
-        else if (nextFirst < nextLast) {
+        } else if (nextFirst < nextLast) {
             System.arraycopy(items, nextFirst + 1, newArr, newArr.length / 4, itemsCount);
         }
         
@@ -71,10 +69,10 @@ public class ArrayDeque<T> {
     public void printDeque() {
         int curr = nextFirst + 1;
         while (curr != nextLast - 1) {
-            if(curr >= items.length) {
+            if (curr >= items.length) {
                 curr -= items.length;
             }
-            System.out.print(items[curr].toString()+' ');
+            System.out.print(items[curr].toString() + ' ');
             curr++;
         }
         System.out.println(items[curr].toString());
@@ -109,7 +107,7 @@ public class ArrayDeque<T> {
         }
         return items[nextFirst + 1 + index];
     }
-    /*public static void main(String[] args) {
+   /*public static void main(String[] args) {
         ArrayDeque<Character> answer = new ArrayDeque<Character>();
         answer.addLast('a');
         answer.addLast('b');
