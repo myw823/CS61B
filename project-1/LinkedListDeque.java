@@ -1,5 +1,3 @@
-
-
 public class LinkedListDeque<T> {
     private class Node {
         private Node prev;
@@ -92,7 +90,7 @@ public class LinkedListDeque<T> {
     }
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         LinkedListDeque<Integer> deque = new LinkedListDeque<>(0);
         boolean emptyOrNot = deque.isEmpty();
         deque.addLast(3);
@@ -110,5 +108,5 @@ public class LinkedListDeque<T> {
         int thirdNumber = deque.getRecursive(2);
         int fifthNumber = deque.getRecursive(4);
         System.out.println(fifthNumber);
-    }
+    }*/
 }
