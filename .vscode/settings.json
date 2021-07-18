@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "proj1a"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+          "/Users/wenyaowei/Documents/org-junit-platform-junit-platform-console-standalone-1.6.0-junit-platform-console-standalone-1.6.0.jar"
+    ]
+}
