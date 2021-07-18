@@ -15,4 +15,26 @@ public class TestPalindrome {
         }
         assertEquals("persiflage", actual);
     } //Uncomment this class once you've created your Palindrome class.
+
+    @Test
+    public void TestPalindrome() {
+        String inputWord = "rotator";
+        Palindrome palindrome = new Palindrome();
+        boolean actual = palindrome.isPalindrome(inputWord);
+
+        assertTrue(inputWord, actual);
+
+        inputWord = "cat";
+        actual = palindrome.isPalindrome(inputWord);
+        assertFalse(inputWord+" should return false", actual);
+
+        assertTrue("denned should return true", palindrome.isPalindrome("denned"));
+
+        assertTrue("z", palindrome.isPalindrome("z"));
+        assertTrue("", palindrome.isPalindrome(""));
+
+
+        
+    }
 }
+
