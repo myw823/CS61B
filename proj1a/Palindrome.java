@@ -12,7 +12,6 @@ public class Palindrome {
         Deque deque = wordToDeque(word);
         return isPalindromeHelper(deque);
     }
-
     private boolean isPalindromeHelper(Deque deque) {
         if (deque.size() <= 1) {
             return true;
@@ -20,6 +19,16 @@ public class Palindrome {
             return false;
         }
         return isPalindromeHelper(deque);
+    }
+
+    // overloading isPalindrome() method
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        for (int i=0, j=word.length()-1; i<j; i++,j--) {
+            if (!cc.equalChars(word.charAt(i), word.charAt(j))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

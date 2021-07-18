@@ -19,7 +19,6 @@ public class TestPalindrome {
     @Test
     public void TestPalindrome() {
         String inputWord = "rotator";
-        Palindrome palindrome = new Palindrome();
         boolean actual = palindrome.isPalindrome(inputWord);
 
         assertTrue(inputWord, actual);
@@ -32,9 +31,19 @@ public class TestPalindrome {
 
         assertTrue("z", palindrome.isPalindrome("z"));
         assertTrue("", palindrome.isPalindrome(""));
+    }
 
-
+    @Test
+    public void TestisOffByOnePalindromeCC() {
+        OffByOne cc = new OffByOne();
         
+        assertTrue("flake -> true", palindrome.isPalindrome("flake", cc));
+
+        assertFalse(palindrome.isPalindrome("cat", cc));
+
+        assertTrue(palindrome.isPalindrome("x", cc));
+
+        assertTrue(palindrome.isPalindrome("", cc));
     }
 }
 
