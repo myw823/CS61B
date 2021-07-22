@@ -1,3 +1,5 @@
+package IntList;
+
 import java.util.Formatter;
 
 /**
@@ -102,7 +104,37 @@ public class IntList {
     }
 
     /*public static IntList reverse(IntList A) {
+        if (A == null) {
+            return null;
+        }
+        IntList firstNode = A;
+        IntList reversed = reverseHelper(A);
+        firstNode.rest = null;
+        return reversed;
+    }*/
+    public static IntList reverse(IntList A) {
+        try {
+            if (A.rest == null || A == null) {
+                return A;
+            } else {
+                IntList reversed = reverse(A.rest);
+                A.rest.rest = A;
+                A.rest = null;
+                return reversed;
+            }
+        } catch (NullPointerException e) {
+            return null;
+        }
 
+    }
+    /*private static IntList reverseHelper(IntList A) {
+        if (A.rest.rest == null || A.rest == null) {
+            A.rest.rest = A;
+            return A.rest;
+        }
+        IntList reversed = reverseHelper(A.rest);
+        A.rest.rest = A;
+        return reversed;
     }*/
 
 
@@ -241,6 +273,5 @@ public class IntList {
         out.format(")");
         return out.toString();
     }
-
 }
 
