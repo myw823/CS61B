@@ -26,7 +26,6 @@ public class IntListTest {
         IntList.dSquareList(L);
         assertEquals(IntList.of(1, 4, 9), L);
     }
-
     /**
      * Do not use the new keyword in your tests. You can create
      * lists using the handy IntList.of method.
@@ -70,4 +69,16 @@ public class IntListTest {
       * to add a main method. See ArithmeticTest.java for an
       * example. */
 
+    @Test
+    public void testReverse() {
+        IntList input = IntList.of(1, 2, 3, 4, 5);
+        IntList exp = IntList.of(5, 4, 3, 2, 1);
+
+        // the function returns a reversed list.
+        assertArrayEquals(exp, IntList.reverse(input));
+        //  function is destructive
+        assertNotEquals(IntList.of(1, 2, 3, 4, 5), input);
+        // function handles a null input properly.
+        assertEquals(null, IntList.reverse(null));
+    }
 }
